@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products List</title>
+</head>
+<body>
+<div th:switch="${products}">
+    <h2 th:case="null">List is empty</h2>
+    <div th:case="*">
+        <h2>Products</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ProductID</th>
+                <th>ProductName</th>
+                <th>ProductQuantity</th>
+                <th>ProductDescription</th>
+                <th>ProductSubTypeID</th>
+                <th>ManufacturerID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each = "product: ${products}">
+                <td th:text = "${product.productID}"></td>
+                <td th:text = "${product.productName}"></td>
+                <td th:text = "${product.productQuantity}"></td>
+                <td th:text = "${product.productDescription}"></td>
+                <td th:text = "${product.productSubTypeID}"></td>
+                <td th:text = "${product.manufacturerID}"></td>
+                <td><a th:href = "@{...update/{id}(id = ${product.productID})}">Update</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-primary btn-xs" th:onclick="'javascript:audit(\''+${product.productID}+'\');'" >Passed the audit</button>
+    <p><a href="/createProduct">Create product</a></p>
+</div>
+</body>
+</html>
