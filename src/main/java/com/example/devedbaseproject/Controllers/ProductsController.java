@@ -54,12 +54,44 @@ public class ProductsController {
     }
 
     @GetMapping("/new")
-    public String newProduct(Model model) {
-        model.addAttribute("product", new ProductModel());
+    public String newProduct(@ModelAttribute("product") ProductModel product) {
         return "new";
     }
 
-//    @PostMapping("")
+    @PostMapping()
+    public String createProduct(@ModelAttribute("product") ProductModel product) {
+        ipr.save(product);
+        return "redirect:/products";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") Long id) {
+        Optional<ProductModel> product = ipr.findById(id);
+        if (product.isPresent()) {
+            model.addAttribute("product", product.get());
+            System.out.println(product);
+        }
+        else {
+            System.out.println("Error Found");
+        }
+
+        return "product/edit";
+    }
+
+    @PostMapping("/{id}")
+    public String update(@ModelAttribute("product") ProductModel product, @PathVariable("id") Long id) {
+        ipr.save(product);
+
+        return "redirect:/products";
+    }
+
+
+
+
+
+
+
+//    @PostMapping("/createproduct")
 //    public String createProduct(@RequestParam("productName") String productName,
 //                                @RequestParam("productQuantity") int productQuantity,
 //                                @RequestParam("productDescription") String productDescription,
@@ -75,15 +107,11 @@ public class ProductsController {
 //        model.addAttribute("product", product);
 //
 ////        if (result.hasErrors()){
-////            return "new";
+////            return "createProduct";
 ////        }
 //        ipr.save(product);
 //        return "redirect:/products";
 //    }
 
-    @PostMapping()
-    public String createProduct(@ModelAttribute("product") ProductModel product) {
-        ipr.save(product);
-        return "redirect:/products";
-    }
+
 }

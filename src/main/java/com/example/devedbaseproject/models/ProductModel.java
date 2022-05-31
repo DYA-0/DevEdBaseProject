@@ -1,9 +1,15 @@
 package com.example.devedbaseproject.models;
 
-//import lombok.Data;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+//@Getter
+//@Setter
+//@NoArgsConstructor
 @Entity
 @Table (name = "Products")
 public class ProductModel  {

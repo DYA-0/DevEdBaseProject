@@ -29,7 +29,7 @@
                 <td th:text = "${product.productDescription}"></td>
                 <td th:text = "${product.productSubTypeID}"></td>
                 <td th:text = "${product.manufacturerID}"></td>
-                <td><a th:href = "@{...update/{id}(id = ${product.Id})}">Update</a></td>
+                <td><a th:href = "@{/products/{id}/edit(id = ${product.Id})}">Update</a></td>
             </tr>
             </tbody>
         </table>
