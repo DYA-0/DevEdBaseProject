@@ -85,6 +85,12 @@ public class ProductsController {
         return "redirect:/products";
     }
 
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable("id") Long id) {
+        ipr.deleteById(id);
+        return "redirect:/products";
+    }
+
 
 
 
