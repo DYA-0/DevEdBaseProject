@@ -53,13 +53,13 @@ public class ProductsController {
         return "product";
     }
 
-    @GetMapping("/products/new")
-    public String productForm(Model model) {
+    @GetMapping("/new")
+    public String newProduct(Model model) {
         model.addAttribute("product", new ProductModel());
-        return "createProduct";
+        return "new";
     }
 
-//    @PostMapping("/createproduct")
+//    @PostMapping("")
 //    public String createProduct(@RequestParam("productName") String productName,
 //                                @RequestParam("productQuantity") int productQuantity,
 //                                @RequestParam("productDescription") String productDescription,
@@ -75,13 +75,13 @@ public class ProductsController {
 //        model.addAttribute("product", product);
 //
 ////        if (result.hasErrors()){
-////            return "createProduct";
+////            return "new";
 ////        }
 //        ipr.save(product);
 //        return "redirect:/products";
 //    }
 
-    @PostMapping("/products")
+    @PostMapping()
     public String createProduct(@ModelAttribute("product") ProductModel product) {
         ipr.save(product);
         return "redirect:/products";
