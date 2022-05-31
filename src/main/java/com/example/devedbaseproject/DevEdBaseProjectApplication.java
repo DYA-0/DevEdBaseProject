@@ -8,11 +8,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
+
 //@SpringBootApplication
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.example.devedbaseproject.repositories")
-//        (exclude = JpaRepositoriesAutoConfiguration.class)
-//@SpringBootApplication(scanBasePackages = {"boot.registration"} , exclude = JpaRepositoriesAutoConfiguration.class)
+////        (exclude = JpaRepositoriesAutoConfiguration.class)
+////@SpringBootApplication(scanBasePackages = {"boot.registration"} , exclude = JpaRepositoriesAutoConfiguration.class)
+////@EnableTransactionManagement
 @EntityScan(basePackages = "com.example.devedbaseproject")
 public class DevEdBaseProjectApplication {
 

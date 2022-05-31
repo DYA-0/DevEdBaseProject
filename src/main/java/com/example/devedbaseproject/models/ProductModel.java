@@ -12,8 +12,8 @@ public class ProductModel  {
 
     }
 
-    public ProductModel(int productID, String productName, int productQuantity, String productDescription, int productSubTypeID, int manufacturerID) {
-        this.productID = productID;
+    public ProductModel(Long Id, String productName, int productQuantity, String productDescription, int productSubTypeID, int manufacturerID) {
+        this.Id = Id;
         this.productName = productName;
         this.productQuantity = productQuantity;
         this.productDescription = productDescription;
@@ -22,9 +22,8 @@ public class ProductModel  {
     }
 
     @Id
-    @Column(name = "productID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int productID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
 
     @Column(name = "productName", nullable = false)
     private String productName;
@@ -42,12 +41,12 @@ public class ProductModel  {
     private int manufacturerID;
 
 
-    public int getProductID() {
-        return productID;
+    public long getId() {
+        return Id;
     }
 
-    public void setProductID(int productID) {
-        this.productID = productID;
+    public void setId(Long productID) {
+        this.Id = productID;
     }
 
     public String getProductName() {
@@ -93,7 +92,7 @@ public class ProductModel  {
     @Override
     public String toString() {
         return "ProductModel{" +
-                "productID=" + productID +
+                "productID=" + Id +
                 ", productName='" + productName + '\'' +
                 ", productQuantity=" + productQuantity +
                 ", productDescription='" + productDescription + '\'' +

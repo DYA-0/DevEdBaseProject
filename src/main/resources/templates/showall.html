@@ -7,7 +7,7 @@
 </head>
 <body>
 <div th:switch="${products}">
-    <h2 th:case="null">List is empty</h2>
+    <h2 th:case="null">List is empty</h2> //todo не работает, не выводится эта надпись
     <div th:case="*">
         <h2>Products</h2>
         <table>
@@ -23,19 +23,20 @@
             </thead>
             <tbody>
             <tr th:each = "product: ${products}">
-                <td th:text = "${product.productID}"></td>
+                <td><a th:href = "@{/products/{id}(id=${product.getId()})}" th:text = "${product.Id}">userid</a></td>
                 <td th:text = "${product.productName}"></td>
                 <td th:text = "${product.productQuantity}"></td>
                 <td th:text = "${product.productDescription}"></td>
                 <td th:text = "${product.productSubTypeID}"></td>
                 <td th:text = "${product.manufacturerID}"></td>
-                <td><a th:href = "@{...update/{id}(id = ${product.productID})}">Update</a></td>
+                <td><a th:href = "@{...update/{id}(id = ${product.Id})}">Update</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <button class="btn btn-primary btn-xs" th:onclick="'javascript:audit(\''+${product.productID}+'\');'" >Passed the audit</button>
-    <p><a href="/createProduct">Create product</a></p>
+    <p><a href="/products/new">Create product</a></p>
 </div>
 </body>
 </html>
+
+<!--<button class="btn btn-primary btn-xs" th:onclick="'javascript:audit(\''+${product.productID}+'\');'" >Test</button>-->
