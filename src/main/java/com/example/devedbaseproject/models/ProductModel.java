@@ -41,7 +41,7 @@ public class ProductModel  {
     private int manufacturerID;
 
 
-    public long getId() {
+    public Long getId() {
         return Id;
     }
 
